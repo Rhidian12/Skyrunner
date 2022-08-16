@@ -28,6 +28,11 @@ void ABaseGun::Init()
 {
 	CurrentMagazine = MagazineSize;
 	CurrentAmmo = MaxAmmo;
+
+	TArray<AActor*> children{};
+	GetAllChildActors(children);
+
+	StartLocation = children[0]->GetActorLocation();
 }
 
 // Called every frame
