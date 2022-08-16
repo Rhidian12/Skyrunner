@@ -3,6 +3,7 @@
 
 #include "BaseGun.h"
 #include "../SkyrunnerGameModeBase.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 ABaseGun::ABaseGun()
@@ -29,10 +30,7 @@ void ABaseGun::Init()
 	CurrentMagazine = MagazineSize;
 	CurrentAmmo = MaxAmmo;
 
-	TArray<AActor*> children{};
-	GetAllChildActors(children);
-
-	StartLocation = children[0]->GetActorLocation();
+	StartLocation = pStartLocationActor->GetComponentLocation();
 }
 
 // Called every frame
