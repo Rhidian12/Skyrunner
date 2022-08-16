@@ -15,5 +15,6 @@ class SKYRUNNER_API AHitscanGun : public ABaseGun
 	GENERATED_BODY()
 public:
 
-	virtual void Fire(const FVector3d& dir) override;
+	UFUNCTION(BlueprintCallable)
+	virtual void Fire(const FVector& dir) override;
 };

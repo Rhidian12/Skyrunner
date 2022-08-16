@@ -19,7 +19,7 @@ public:
 
 	void AddAmmo(const int nrOfMagazines);
 	void Reload();
-	virtual void Fire(const FVector3d& dir) { UE_LOG(LogTemp, Warning, TEXT("Base gun should not be fired")); }
+	virtual void Fire(const FVector& dir) { UE_LOG(LogTemp, Warning, TEXT("Base gun should not be fired")); }
 	bool CanFire() const { return (RateOfFireTimer <= 0.f && ReloadTimer <= 0.f); }
 
 	UPROPERTY(BlueprintReadWrite)
@@ -37,8 +37,6 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 		class UArrowComponent* pStartLocationActor;
-
-	FVector3d StartLocation;
 
 private:
 	void Init();

@@ -29,8 +29,6 @@ void ABaseGun::Init()
 {
 	CurrentMagazine = MagazineSize;
 	CurrentAmmo = MaxAmmo;
-
-	StartLocation = pStartLocationActor->GetComponentLocation();
 }
 
 // Called every frame
