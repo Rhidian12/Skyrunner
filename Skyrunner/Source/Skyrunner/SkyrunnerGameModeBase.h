@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
+#include "Public/InitialisationSystem.h"
 #include "SkyrunnerGameModeBase.generated.h"
 
 /**
@@ -19,8 +20,8 @@ public:
 
 	virtual void StartMatch() override;
 
-	class UInitialisationSystem* const GetInitSystem() const { return pInitSystemInstance; }
+	UInitialisationSystem* const GetInitSystem() const { return pInitSystemInstance; }
 
 private:
-	class UInitialisationSystem* pInitSystemInstance{};
+	UInitialisationSystem* pInitSystemInstance{};
 };

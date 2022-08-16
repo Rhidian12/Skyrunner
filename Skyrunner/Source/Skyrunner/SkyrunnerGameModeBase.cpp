@@ -2,7 +2,6 @@
 
 
 #include "SkyrunnerGameModeBase.h"
-#include "Public/InitialisationSystem.h"
 
 ASkyrunnerGameModeBase::ASkyrunnerGameModeBase()
 {
