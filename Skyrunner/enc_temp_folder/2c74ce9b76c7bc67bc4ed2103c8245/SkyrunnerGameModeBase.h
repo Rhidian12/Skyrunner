@@ -22,9 +22,6 @@ public:
 
 	UInitialisationSystem* const GetInitSystem() const { return pInitSystemInstance; }
 
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<AActor> PlayerPawn;
-
 private:
 	UInitialisationSystem* pInitSystemInstance{};
 };
