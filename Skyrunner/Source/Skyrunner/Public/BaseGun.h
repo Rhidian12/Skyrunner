@@ -22,14 +22,18 @@ public:
 	virtual void Fire(const FVector& dir) { UE_LOG(LogTemp, Warning, TEXT("Base gun should not be fired")); }
 	bool CanFire() const { return (RateOfFireTimer <= 0.f && ReloadTimer <= 0.f); }
 
-	UPROPERTY(BlueprintReadWrite)
-	int MagazineSize;
-	UPROPERTY(BlueprintReadWrite)
-	float RateOfFire;
-	UPROPERTY(BlueprintReadWrite)
-	float ReloadTime;
-	UPROPERTY(BlueprintReadWrite)
-	int MaxAmmo;
+	UPROPERTY(EditAnywhere)
+		int MagazineSize;
+	UPROPERTY(EditAnywhere)
+		float RateOfFire;
+	UPROPERTY(EditAnywhere)
+		float ReloadTime;
+	UPROPERTY(EditAnywhere)
+		int MaxAmmo;
+	UPROPERTY(EditAnywhere)
+		bool bHasInfiniteAmmo;
+	UPROPERTY(EditAnywhere)
+		bool bMustReload;
 
 protected:
 	// Called when the game starts or when spawned
@@ -38,11 +42,11 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 		class UArrowComponent* pStartLocationActor;
 
-private:
-	void Init();
-
 	int CurrentMagazine;
 	int CurrentAmmo;
 	float RateOfFireTimer;
 	float ReloadTimer;
+
+private:
+	void Init();
 };
