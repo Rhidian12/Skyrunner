@@ -17,4 +17,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Fire(const FVector& dir) override;
+
+	UPROPERTY(BlueprintReadWrite)
+		int DamagePerBullet;
 };
