@@ -10,7 +10,7 @@ ABaseGun::ABaseGun()
 	: RateOfFireTimer{}
 	, ReloadTimer{}
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -29,6 +29,8 @@ void ABaseGun::Init()
 {
 	CurrentMagazine = MagazineSize;
 	CurrentAmmo = MaxAmmo;
+
+	RateOfFireTimer = RateOfFire;
 }
 
 // Called every frame
@@ -59,17 +61,23 @@ void ABaseGun::AddAmmo(const int nrOfMagazines)
 
 void ABaseGun::Reload()
 {
-	if (CurrentMagazine >= MagazineSize || CurrentAmmo <= 0)
+	if (CurrentMagazine >= MagazineSize || CurrentAmmo <= 0 || !bMustReload)
 	{
 		return;
 	}
 
 	int ammoToReload = (MagazineSize - CurrentMagazine);
-	if (ammoToReload > CurrentAmmo)
+
+	if (!bHasInfiniteAmmo)
 	{
-		ammoToReload = CurrentAmmo;
+		if (ammoToReload > CurrentAmmo)
+		{
+			ammoToReload = CurrentAmmo;
+		}
+		CurrentAmmo -= ammoToReload;
 	}
-	CurrentAmmo -= ammoToReload;
 
 	CurrentMagazine += ammoToReload;
+
+	ReloadTimer = ReloadTime;
 }

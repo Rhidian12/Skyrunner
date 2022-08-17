@@ -6,6 +6,11 @@
 
 void AHitscanGun::Fire(const FVector& dir)
 {
+	if (!CanFire())
+	{
+		return;
+	}
+
 	FHitResult hit{};
 
 	const FVector& start{ pStartLocationActor->GetComponentLocation() };
@@ -22,4 +27,6 @@ void AHitscanGun::Fire(const FVector& dir)
 	{
 		DrawDebugLine(GetWorld(), start, start + dir * 5000.f, FColor::Cyan, false, 5.f, 0u, 3.f);
 	}
+
+	RateOfFireTimer = RateOfFire;
 }
