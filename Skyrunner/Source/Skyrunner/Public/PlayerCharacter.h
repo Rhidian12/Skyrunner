@@ -19,6 +19,23 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable)
+	void Dash();
+	UFUNCTION(BlueprintPure)
+	bool CanDash() const;
+	UFUNCTION(BlueprintPure)
+	bool IsInvulnerable() const;
+
+	UPROPERTY(EditAnywhere)
+	float DashForce;
+	UPROPERTY(EditAnywhere)
+	float DashCooldownTime;
+	UPROPERTY(EditAnywhere)
+	float DashInvulnerabilityTime;
+
+	float DashCooldownTimer;
+	float DashInvulnerabilityTimer;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

@@ -18,11 +18,41 @@ void APlayerCharacter::BeginPlay()
 	
 }
 
+void APlayerCharacter::Dash()
+{
+	if (CanDash())
+	{
+		
+		GetMesh()->AddImpulse(GetActorForwardVector() * DashForce);
+		DashCooldownTimer = DashCooldownTime;
+		DashInvulnerabilityTimer = DashInvulnerabilityTime;
+	}
+}
+
+bool APlayerCharacter::CanDash() const
+{
+	return DashCooldownTimer <= 0.0f;
+}
+
+bool APlayerCharacter::IsInvulnerable() const
+{
+	return DashInvulnerabilityTimer > 0.0f;
+}
+
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+
+	if (!CanDash())
+	{
+		DashCooldownTimer -= DeltaTime;
+	}
+	if (IsInvulnerable())
+	{
+		DashInvulnerabilityTimer -= DeltaTime;
+	}
 }
 
 // Called to bind functionality to input
