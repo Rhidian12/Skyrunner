@@ -22,17 +22,17 @@ public:
 	virtual void Fire(const FVector& dir) { UE_LOG(LogTemp, Warning, TEXT("Base gun should not be fired")); }
 	bool CanFire() const { return (RateOfFireTimer <= 0.f && ReloadTimer <= 0.f); }
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int MagazineSize;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float RateOfFire;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float ReloadTime;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int MaxAmmo;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bHasInfiniteAmmo;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool bMustReload;
 
 protected:
