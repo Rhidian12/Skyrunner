@@ -6,6 +6,7 @@
 
 AEnemyController::AEnemyController()
 {
+	SetGenericTeamId(FGenericTeamId{ 1 });
 }
 
 void AEnemyController::BeginPlay()
