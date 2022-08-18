@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "PlayerCharacter.generated.h"
 
 UCLASS()
@@ -21,8 +22,12 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void Dash();
+	UFUNCTION(BlueprintCallable)
+	void OnDashEnd();
 	UFUNCTION(BlueprintPure)
 	bool CanDash() const;
+	UFUNCTION(BlueprintPure)
+	bool IsDashing() const;
 	UFUNCTION(BlueprintPure)
 	bool IsInvulnerable() const;
 
@@ -31,10 +36,17 @@ protected:
 	UPROPERTY(EditAnywhere)
 	float DashCooldownTime;
 	UPROPERTY(EditAnywhere)
+	float DashDuration;
+	UPROPERTY(EditAnywhere)
 	float DashInvulnerabilityTime;
 
 	float DashCooldownTimer;
+	float DashDurationTimer;
 	float DashInvulnerabilityTimer;
+
+	UCharacterMovementComponent* pCharacterMovementComponent;
+	float OldGroundFriction;
+	float MovementSpeedPreDashSquared;
 
 public:	
 	// Called every frame
@@ -43,4 +55,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	UFUNCTION()
+	void Init();
 };
