@@ -24,7 +24,7 @@
 		},
 		{
 			"Name": "BlueprintRetarget",
-			"Enabled": true
+			"Enabled": false
 		}
 	]
 }

@@ -33,18 +33,6 @@
 			"Type": "RequiredResource"
 		},
 		{
-			"Path": "$(ProjectDir)/Plugins/BlueprintRetarget/Binaries/Win64/UnrealEditor-BlueprintRetarget-Win64-DebugGame.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/BlueprintRetarget/Binaries/Win64/UnrealEditor-BlueprintRetarget-Win64-DebugGame.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/BlueprintRetarget/Binaries/Win64/UnrealEditor-Win64-DebugGame.modules",
-			"Type": "RequiredResource"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/AgentInterface.dll",
 			"Type": "RequiredResource"
 		},
@@ -2982,10 +2970,6 @@
 		}
 	],
 	"RuntimeDependencies": [
-		{
-			"Path": "$(ProjectDir)/Plugins/BlueprintRetarget/BlueprintRetarget.uplugin",
-			"Type": "UFS"
-		},
 		{
 			"Path": "$(ProjectDir)/Skyrunner.uproject",
 			"Type": "UFS"

@@ -1,9 +1,0 @@
-{
-	"RemapUnityFiles": 
-	{
-		"Module.BlueprintRetarget.cpp.obj": [
-			"BlueprintRetarget.cpp.obj",
-			"ContentBrowserExtensions.cpp.obj"
-		]
-	}
-}
