@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "GameFramework/PawnMovementComponent.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -22,8 +23,15 @@ void APlayerCharacter::Dash()
 {
 	if (CanDash())
 	{
+		FVector playerForward{ GetActorForwardVector() };
 		
-		GetMesh()->AddImpulse(GetActorForwardVector() * DashForce);
+		if (GetMovementComponent()->IsMovingOnGround() && playerForward.Z < 0.0f)
+		{
+			playerForward.Z = 0;
+			playerForward.Normalize();
+		}
+		
+		LaunchCharacter(playerForward * DashForce, true, true);
 		DashCooldownTimer = DashCooldownTime;
 		DashInvulnerabilityTimer = DashInvulnerabilityTime;
 	}
