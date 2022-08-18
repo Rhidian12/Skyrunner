@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GenericTeamAgentInterface.h"
 #include "PlayerCharacter.generated.h"
 
 UCLASS()
-class SKYRUNNER_API APlayerCharacter : public ACharacter
+class SKYRUNNER_API APlayerCharacter : public ACharacter, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
@@ -58,4 +59,8 @@ public:
 private:
 	UFUNCTION()
 	void Init();
+
+	FGenericTeamId TeamID;
+
+	virtual FGenericTeamId GetGenericTeamId() const override;
 };
