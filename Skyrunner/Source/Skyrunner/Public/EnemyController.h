@@ -7,11 +7,18 @@
 #include "EnemyController.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class SKYRUNNER_API AEnemyController : public AAIController
 {
 	GENERATED_BODY()
-	
+public:
+	AEnemyController();
+
+	virtual void BeginPlay() override;
+
+private:
+	UFUNCTION()
+		void Init();
 };

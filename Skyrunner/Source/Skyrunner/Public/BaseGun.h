@@ -48,5 +48,6 @@ protected:
 	float ReloadTimer;
 
 private:
-	void Init();
+	UFUNCTION()
+		void Init();
 };
