@@ -23,6 +23,11 @@ void APlayerCharacter::BeginPlay()
 	Cast<ASkyrunnerGameModeBase>(GetWorld()->GetAuthGameMode())->GetInitSystem()->OnGameStart.Add(initializeDelegate);
 }
 
+void APlayerCharacter::ResetJumpCount()
+{
+	JumpCurrentCount = 0;
+}
+
 void APlayerCharacter::Init()
 {
 	pCharacterMovementComponent = Cast<UCharacterMovementComponent>(GetMovementComponent());

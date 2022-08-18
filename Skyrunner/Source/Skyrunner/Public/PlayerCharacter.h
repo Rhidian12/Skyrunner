@@ -17,9 +17,14 @@ public:
 	// Sets default values for this character's properties
 	APlayerCharacter();
 
+	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable)
+	void ResetJumpCount();
 
 	UFUNCTION(BlueprintCallable)
 	void Dash();
