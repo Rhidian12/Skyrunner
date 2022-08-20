@@ -22,6 +22,8 @@ void AHitscanGun::Fire(const FVector& dir)
 		ECC_GameTraceChannel1))
 	{
 		DrawDebugLine(GetWorld(), start, hit.ImpactPoint, FColor::Cyan, false, 5.f, 0u, 3.f);
+
+		OnHit(hit.GetActor());
 	}
 	else
 	{
