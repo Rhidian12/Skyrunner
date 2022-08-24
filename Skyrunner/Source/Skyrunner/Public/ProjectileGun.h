@@ -18,6 +18,6 @@ public:
 
 	virtual void Fire(const FVector& dir) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere)
 		TSubclassOf<ABaseProjectile> ProjectileToFire;
 };
