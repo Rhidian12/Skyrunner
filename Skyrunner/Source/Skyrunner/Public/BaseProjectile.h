@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "KillSelfComponent.h"
 #include "BaseProjectile.generated.h"
 
 UCLASS()
@@ -19,10 +20,16 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		FVector Direction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float Speed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UKillSelfComponent* KillSelfComponent;
 
 protected:
 	// Called when the game starts or when spawned
