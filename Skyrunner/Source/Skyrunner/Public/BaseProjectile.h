@@ -10,8 +10,8 @@ UCLASS()
 class SKYRUNNER_API ABaseProjectile : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ABaseProjectile();
 
@@ -19,7 +19,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int Damage;
+		int Damage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Speed;
 
 protected:
 	// Called when the game starts or when spawned
