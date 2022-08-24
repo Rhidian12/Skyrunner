@@ -30,7 +30,7 @@ void ABaseGun::Init()
 	CurrentMagazine = MagazineSize;
 	CurrentAmmo = MaxAmmo;
 
-	RateOfFireTimer = RateOfFire;
+	// RateOfFireTimer = RateOfFire;
 }
 
 // Called every frame
