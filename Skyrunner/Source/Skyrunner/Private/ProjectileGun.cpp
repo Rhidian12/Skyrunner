@@ -16,4 +16,6 @@ void AProjectileGun::Fire(const FVector& dir)
 	ABaseProjectile* pProj{ Cast<ABaseProjectile>(GetWorld()->SpawnActor(*ProjectileToFire, &location, &rotation)) };
 
 	pProj->Direction = dir;
+
+	RateOfFireTimer = RateOfFire;
 }
