@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
 #include "BaseEnemy.generated.h"
 
 UCLASS()
-class SKYRUNNER_API ABaseEnemy : public APawn
+class SKYRUNNER_API ABaseEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
