@@ -16,8 +16,12 @@ class SKYRUNNER_API AProjectileGun : public ABaseGun
 	GENERATED_BODY()
 public:
 
+	UFUNCTION(BlueprintCallable)
 	virtual void Fire(const FVector& dir) override;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		TSubclassOf<ABaseProjectile> ProjectileToFire;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		float ProjectileSpeed;
 };

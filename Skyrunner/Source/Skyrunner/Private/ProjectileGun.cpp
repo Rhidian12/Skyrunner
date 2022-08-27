@@ -11,11 +11,11 @@ void AProjectileGun::Fire(const FVector& dir)
 		return;
 	}
 
-	FRotator rotation{ 0.f };
-	FVector location{ pStartLocationActor->GetComponentLocation() };
-	ABaseProjectile* pProj{ Cast<ABaseProjectile>(GetWorld()->SpawnActor(*ProjectileToFire, &location, &rotation)) };
+	FTransform transform{ pStartLocationActor->GetComponentTransform() };
+	ABaseProjectile* pProj{ Cast<ABaseProjectile>(GetWorld()->SpawnActor(*ProjectileToFire, &transform)) };
 
-	pProj->Direction = dir;
+	pProj->ProjectileMovementComponent->InitialSpeed = ProjectileSpeed;
+	pProj->ProjectileMovementComponent->MaxSpeed = 0.f;
 
 	RateOfFireTimer = RateOfFire;
 }

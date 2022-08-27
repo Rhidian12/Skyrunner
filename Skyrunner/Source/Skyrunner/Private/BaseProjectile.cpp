@@ -10,28 +10,19 @@ ABaseProjectile::ABaseProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 
 	KillSelfComponent = CreateDefaultSubobject<UKillSelfComponent>("Kill Self Component");
-
 }
 
 // Called when the game starts or when spawned
 void ABaseProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	ProjectileMovementComponent = Cast<UProjectileMovementComponent>(GetComponentByClass(UProjectileMovementComponent::StaticClass()));
 }
 
 // Called every frame
 void ABaseProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	if (Direction != FVector::ZeroVector)
-	{
-		FVector currentPos{ GetActorLocation() };
-
-		currentPos += Direction * DeltaTime * Speed;
-
-		SetActorLocation(currentPos);
-	}
 }
 
