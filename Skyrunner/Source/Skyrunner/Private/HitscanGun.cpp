@@ -18,9 +18,17 @@ void AHitscanGun::Fire(const FVector& dir)
 		Cast<APawn>(
 			GetOwner())->GetController())
 		->PlayerCameraManager->GetCameraLocation() };
-	const FVector& muzzleStart{ pStartLocationActor->GetComponentLocation() };
 
-	const FVector& end{ cameraStart + forward * 5000.f };
+	FVector end{};
+	FCollisionQueryParams params{};
+	params.AddIgnoredActor(GetOwner());
+
+	if (GetWorld()->LineTraceSingleByChannel(hit, cameraStart, cameraStart + forward * 5000.f, ECC_GameTraceChannel1, params))
+	{
+		end = hit.ImpactPoint;
+	}
+
+	const FVector& muzzleStart{ pStartLocationActor->GetComponentLocation() };
 
 	if (GetWorld()->LineTraceSingleByChannel(hit, muzzleStart, end, ECC_GameTraceChannel1))
 	{
