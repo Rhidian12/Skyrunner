@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BaseGun.h"
+#include "Camera/CameraComponent.h"
 #include "HitscanGun.generated.h"
 
 /**
@@ -21,6 +22,10 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 		void OnHit(AActor* pHitActor);
 
+	virtual void BeginPlay() override;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int DamagePerBullet;
+
+private:
 };

@@ -13,22 +13,30 @@ void AHitscanGun::Fire(const FVector& dir)
 
 	FHitResult hit{};
 
-	const FVector& start{ pStartLocationActor->GetComponentLocation() };
+	const FVector& forward{ GetActorForwardVector() };
+	const FVector& cameraStart{ Cast<APlayerController>(
+		Cast<APawn>(
+			GetOwner())->GetController())
+		->PlayerCameraManager->GetCameraLocation() };
+	const FVector& muzzleStart{ pStartLocationActor->GetComponentLocation() };
 
-	if (GetWorld()->LineTraceSingleByChannel(
-		hit,
-		start,
-		start + dir * 5000.f,
-		ECC_GameTraceChannel1))
+	const FVector& end{ cameraStart + forward * 5000.f };
+
+	if (GetWorld()->LineTraceSingleByChannel(hit, muzzleStart, end, ECC_GameTraceChannel1))
 	{
-		DrawDebugLine(GetWorld(), start, hit.ImpactPoint, FColor::Cyan, false, 5.f, 0u, 3.f);
-
+		DrawDebugLine(GetWorld(), muzzleStart, hit.ImpactPoint, FColor::Cyan, false, 5.f, 0u, 3.f);
+	
 		OnHit(hit.GetActor());
 	}
 	else
 	{
-		DrawDebugLine(GetWorld(), start, start + dir * 5000.f, FColor::Cyan, false, 5.f, 0u, 3.f);
+		DrawDebugLine(GetWorld(), muzzleStart, end, FColor::Cyan, false, 5.f, 0u, 3.f);
 	}
 
 	RateOfFireTimer = RateOfFire;
+}
+
+void AHitscanGun::BeginPlay()
+{
+	Super::BeginPlay();
 }
