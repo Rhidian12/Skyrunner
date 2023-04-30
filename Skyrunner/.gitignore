@@ -20,7 +20,7 @@ Builds/*
 # Compiled Dynamic libraries
 *.so
 *.dylib
-#*.dll
+*.dll
 
 # Fortran module files
 *.mod
@@ -69,7 +69,7 @@ SourceArt/**/*.png
 SourceArt/**/*.tga
 
 # Binary Files
-#Binaries/*
+Binaries/*
 Plugins/*/Binaries/*
 
 # Builds
